@@ -7,8 +7,11 @@
     <link href="main.css" rel="stylesheet" />
 </head>
 <body>
-<input type="number" id="sortInput" value=""/>
-<button class="submit" onClick="handleSubmit()" type="submit">Sortuj!</button>
+<div class="input-container">
+    <label for="sortInput">Liczba tablic - </label>
+    <input type="number" id="sortInput" value=""/>
+    <button class="submit" onClick="handleSubmit()" type="submit">Sortuj!</button>
+</div>
 <div class="results">
 </div>
 <script src="./sort.js"></script>

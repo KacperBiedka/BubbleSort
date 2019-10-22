@@ -4,30 +4,79 @@
 }
 
 body {
-    background: #555;
+    background: #222;
     font-family: 'Roboto', sans-serif;
 }
 
-.sort {
-    display: block;
-    margin: auto;
-    width: 250px;
-    height: 30px;
-    padding: 10px;
-    margin-top: 10%;
+label {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#sortInput {
+    background: none;
+    border: none;
+    width: 200px;
+    border-bottom: solid 1px #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: -5px;
+    padding: 5px;
+}
+
+input:focus {
+    outline: none;
 }
 
 .submit {
     display: block;
-    margin: auto;
+    margin: 20px;
     width: 200px;
-    height: 50px;
-    font-size: 20px;
-    background: #fff;
-    margin-top: 10px;
+    font-size: 1.4rem;
+    background: none;
+    color: lightseagreen;
+    border: solid 1px lightseagreen;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 0.25s ease-in-out;
+}
+
+.submit:hover {
+    transform: scale(1.025);
 }
 
 .results {
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    max-width: 800px;
+}
+
+.result {
+    margin: 25px auto;
+    max-width: 600px;
+    border-bottom: solid 1px #fff;
+    padding: 20px 5px;
+}
+
+.iterations {
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-color: lightseagreen;
+    margin-bottom: 10px;
+}
+
+.array {
+    text-align: right;
     margin-top: 20px;
 }
 
@@ -43,10 +92,8 @@ body {
 h1 {
     display: block;
     margin: auto;
-    text-align: center;
     color: #fff;
-    font-size: 30px;
-
+    font-size: 1.25rem;
 }
 
 input[type=number]::-webkit-inner-spin-button,
