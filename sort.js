@@ -83,6 +83,8 @@ const createRandomValues = (length) => {
 
 const handleSubmit = () => {
     sortResults = [];
+    const loader = document.querySelector('.sk-circle');
+    loader.classList.add('visible');
     // Clear previous results
     const container = document.querySelector('.results');
     while (container.firstChild) {
@@ -103,6 +105,9 @@ const handleSubmit = () => {
             createRandomValues(10);
             renderResults(sortArray);
             console.info(sortResults);
+            if (i === amount - 1) {
+                loader.classList.remove('visible');
+            }
         }
         renderStats();
         stats.classList.add('visible');
