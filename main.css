@@ -12,6 +12,7 @@ label {
   color: #fff;
   font-size: 1.5rem;
   margin-right: 10px;
+  font-weight: 300;
 }
 
 .input-container {
@@ -32,6 +33,8 @@ label {
   margin-top: -5px;
   padding: 5px;
   transition: border-color 0.5s ease-in-out;
+  font-weight: 300;
+  font-family: "Roboto", sans-serif;
 }
 
 #sortInput:focus {
@@ -64,28 +67,32 @@ label {
   justify-content: center;
   align-items: center;
   max-width: 550px;
-  border: solid 1px #fff;
-  padding: 30px;
+  border: solid 1px lightseagreen;
+  padding: 20px;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 
 .statHeader {
   display: block;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   max-width: 600px;
-  font-weight: 400;
+  font-weight: 300;
   margin-top: 2%;
+  opacity: 0;
+}
+
+.comparisonContainer .stats {
+  border-color: lightcoral;
 }
 
 .comparisonContainer .stat {
-  text-decoration-color: lightcoral;
+  color: lightcoral;
 }
 
 .stat {
-  text-decoration: underline;
-  text-decoration-color: lightseagreen;
-  font-size: 1.5rem;
+  color: lightseagreen;
+  font-size: 1.25rem;
 }
 
 .results {

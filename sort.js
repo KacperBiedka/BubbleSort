@@ -2,7 +2,6 @@ let iterationCount = 0;
 let comparisonCount = 0;
 let sortResults = [];
 let comparisonResults = [];
-let firstRun = true;
 
 // Prevent unwanted signs
 
@@ -51,9 +50,6 @@ const renderStats = () => {
   const avg = Math.floor(
     sortResults.reduce((a, b) => a + b, 0) / sortResults.length
   );
-  const iterationsHeader = document.createElement("h1");
-  iterationsHeader.classList.add("statHeader");
-  iterationsHeader.innerText = "Iteracje";
   console.info(max, min, avg);
   const maxDisplay = document.createElement("h1");
   maxDisplay.classList.add("stat");
@@ -64,13 +60,9 @@ const renderStats = () => {
   const avgDisplay = document.createElement("h1");
   avgDisplay.classList.add("stat");
   avgDisplay.innerText = `Średnio - ${avg}`;
-  if (firstRun) {
-    wrapper.insertBefore(iterationsHeader, wrapper.firstChild);
-  }
   container.appendChild(maxDisplay);
   container.appendChild(minDisplay);
   container.appendChild(avgDisplay);
-  firstRun = false;
 };
 
 renderComparisons = () => {
@@ -81,9 +73,6 @@ renderComparisons = () => {
   const avg = Math.floor(
     sortResults.reduce((a, b) => a + b, 0) / comparisonResults.length
   );
-  const iterationsHeader = document.createElement("h1");
-  iterationsHeader.classList.add("statHeader");
-  iterationsHeader.innerText = "Porównania";
   console.info(max, min, avg);
   const maxDisplay = document.createElement("h1");
   maxDisplay.classList.add("stat");
@@ -94,13 +83,9 @@ renderComparisons = () => {
   const avgDisplay = document.createElement("h1");
   avgDisplay.classList.add("stat");
   avgDisplay.innerText = `Średnio - ${avg}`;
-  if (firstRun) {
-    wrapper.insertBefore(iterationsHeader, wrapper.firstChild);
-  }
   container.appendChild(maxDisplay);
   container.appendChild(minDisplay);
   container.appendChild(avgDisplay);
-  firstRun = false;
 };
 
 const renderResults = inputArray => {
@@ -152,9 +137,14 @@ const handleSubmit = () => {
   while (comparisons.firstChild) {
     comparisons.removeChild(comparisons.firstChild);
   }
+  const statHeader = document.querySelectorAll(".statHeader");
+  console.info(statHeader);
   comparisons.classList.remove("visible");
+  statHeader[0].classList.remove("visible");
+  statHeader[1].classList.remove("visible");
   container.classList.remove("visible");
   stats.classList.remove("visible");
+
   // Generate new results
   const amount = document.getElementById("sortInput").value.trim();
   if (amount) {
@@ -167,8 +157,10 @@ const handleSubmit = () => {
     renderStats();
     renderComparisons();
     comparisons.classList.add("visible");
-    stats.classList.add("visible");
+    statHeader[0].classList.add("visible");
+    statHeader[1].classList.add("visible");
     container.classList.add("visible");
+    stats.classList.add("visible");
   } else {
     document.querySelector("#sortInput").classList.remove("shake");
     setTimeout(() => {
