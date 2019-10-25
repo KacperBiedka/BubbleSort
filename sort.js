@@ -71,7 +71,7 @@ renderComparisons = () => {
   const max = Math.max(...comparisonResults);
   const min = Math.min(...comparisonResults);
   const avg = Math.floor(
-    sortResults.reduce((a, b) => a + b, 0) / comparisonResults.length
+    comparisonResults.reduce((a, b) => a + b, 0) / comparisonResults.length
   );
   console.info(max, min, avg);
   const maxDisplay = document.createElement("h1");
