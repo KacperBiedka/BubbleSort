@@ -1,150 +1,161 @@
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    background: #222;
-    font-family: 'Roboto', sans-serif;
+  background: #222;
+  font-family: "Roboto", sans-serif;
 }
 
 label {
-    color: #fff;
-    font-size: 1.5rem;
-    margin-right: 10px;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 10px;
 }
 
 .input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #sortInput {
-    background: none;
-    border: none;
-    width: 200px;
-    border-bottom: solid 1px #fff;
-    text-align: center;
-    font-size: 1.5rem;
-    color: #fff;
-    margin-top: -5px;
-    padding: 5px;
-    transition: border-color 0.5s ease-in-out;
+  background: none;
+  border: none;
+  width: 200px;
+  border-bottom: solid 1px #fff;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: -5px;
+  padding: 5px;
+  transition: border-color 0.5s ease-in-out;
 }
 
 #sortInput:focus {
-    outline: none;
-    border-color: lightseagreen;
+  outline: none;
+  border-color: lightseagreen;
 }
 
 .submit {
-    display: block;
-    margin: 20px;
-    width: 200px;
-    font-size: 1.4rem;
-    background: none;
-    color: lightseagreen;
-    border: solid 1px lightseagreen;
-    padding: 5px;
-    cursor: pointer;
-    transition: transform 0.25s ease-in-out;
+  display: block;
+  margin: 20px;
+  width: 200px;
+  font-size: 1.4rem;
+  background: none;
+  color: lightseagreen;
+  border: solid 1px lightseagreen;
+  padding: 5px;
+  cursor: pointer;
+  transition: transform 0.25s ease-in-out;
 }
 
 .submit:hover {
-    transform: scale(1.025);
+  transform: scale(1.025);
 }
 
 .stats {
-    margin: auto;
-    margin-top: 20px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 550px;
-    border: solid 1px #fff;
-    padding: 30px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 550px;
+  border: solid 1px #fff;
+  padding: 30px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.statHeader {
+  display: block;
+  font-size: 1.75rem;
+  max-width: 600px;
+  font-weight: 400;
+  margin-top: 2%;
+}
+
+.comparisonContainer .stat {
+  text-decoration-color: lightcoral;
 }
 
 .stat {
-    text-decoration: underline;
-    text-decoration-color: lightcoral;
-    font-size: 1.5rem;
+  text-decoration: underline;
+  text-decoration-color: lightseagreen;
+  font-size: 1.5rem;
 }
 
 .results {
-    margin: auto;
-    margin-top: 20px;
-    text-align: center;
-    max-width: 800px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+  max-width: 800px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .visible {
-    opacity: 1;
+  opacity: 1;
 }
 
 .result {
-    margin: 25px auto;
-    max-width: 600px;
-    border-bottom: solid 1px #fff;
-    padding: 20px 5px;
+  margin: 25px auto;
+  max-width: 600px;
+  border-bottom: solid 1px #fff;
+  padding: 20px 5px;
 }
 
 .iterations {
-    text-align: left;
-    text-decoration: underline;
-    text-decoration-color: lightseagreen;
-    margin-bottom: 10px;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: lightseagreen;
+  margin-bottom: 20px;
+}
+
+.comparisons {
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: lightcoral;
+  margin-bottom: 20px;
 }
 
 .array {
-    text-align: right;
-    margin-top: 25px;
-}
-
-.iterationsDisplay {
-    text-decoration: underline;
-    text-decoration-color: mediumseagreen;
-    text-align: center;
-    padding: 20px 10px;
-    width: 100%;
-    display: block;
+  text-align: right;
+  margin-top: 25px;
 }
 
 h1 {
-    display: block;
-    margin: auto;
-    color: #fff;
-    font-size: 1.25rem;
+  display: block;
+  margin: auto;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 300;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .shake {
-    animation: shake 0.25s alternate 2 ease-in-out;
- }
+  animation: shake 0.25s alternate 2 ease-in-out;
+}
 
 @keyframes shake {
-    0% {
-        transform: translateX(0) rotate(0deg);
-    }
-    25% {
-        transform: translateX(1%) rotate(2deg);
-    }
-    50% {
-        transform: translateX(0) rotate(0);
-    }
-    100% {
-        transform: translateX(-1%) rotate(-2deg);
-    }
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(1%) rotate(2deg);
+  }
+  50% {
+    transform: translateX(0) rotate(0);
+  }
+  100% {
+    transform: translateX(-1%) rotate(-2deg);
+  }
 }

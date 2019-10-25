@@ -1,5 +1,8 @@
 let iterationCount = 0;
+let comparisonCount = 0;
 let sortResults = [];
+let comparisonResults = [];
+let firstRun = true;
 
 // Prevent unwanted signs
 
@@ -16,15 +19,17 @@ document
 
 let bubbleSort = inputArr => {
   iterationCount = 0;
+  comparisonCount = 0;
   let len = inputArr.length;
   let swapped;
   do {
     swapped = false;
     // compares two values and sorts by ascending values
     for (let j = 0; j < len; j++) {
+      iterationCount++;
       if (inputArr[j] > inputArr[j + 1]) {
+        comparisonCount++;
         let tmp = inputArr[j];
-        iterationCount++;
         inputArr[j] = inputArr[j + 1];
         inputArr[j + 1] = tmp;
         swapped = true;
@@ -32,18 +37,23 @@ let bubbleSort = inputArr => {
     }
   } while (swapped);
   sortResults.push(iterationCount);
+  comparisonResults.push(comparisonCount);
   return inputArr;
 };
 
 let sortArray = [];
 
 const renderStats = () => {
-  const container = document.querySelector(".stats");
+  const wrapper = document.querySelector(".iterationContainer");
+  const container = document.querySelector(".iterationContainer .stats");
   const max = Math.max(...sortResults);
   const min = Math.min(...sortResults);
   const avg = Math.floor(
     sortResults.reduce((a, b) => a + b, 0) / sortResults.length
   );
+  const iterationsHeader = document.createElement("h1");
+  iterationsHeader.classList.add("statHeader");
+  iterationsHeader.innerText = "Iteracje";
   console.info(max, min, avg);
   const maxDisplay = document.createElement("h1");
   maxDisplay.classList.add("stat");
@@ -54,9 +64,43 @@ const renderStats = () => {
   const avgDisplay = document.createElement("h1");
   avgDisplay.classList.add("stat");
   avgDisplay.innerText = `Średnio - ${avg}`;
+  if (firstRun) {
+    wrapper.insertBefore(iterationsHeader, wrapper.firstChild);
+  }
   container.appendChild(maxDisplay);
   container.appendChild(minDisplay);
   container.appendChild(avgDisplay);
+  firstRun = false;
+};
+
+renderComparisons = () => {
+  const wrapper = document.querySelector(".comparisonContainer");
+  const container = document.querySelector(".comparisonContainer .stats");
+  const max = Math.max(...comparisonResults);
+  const min = Math.min(...comparisonResults);
+  const avg = Math.floor(
+    sortResults.reduce((a, b) => a + b, 0) / comparisonResults.length
+  );
+  const iterationsHeader = document.createElement("h1");
+  iterationsHeader.classList.add("statHeader");
+  iterationsHeader.innerText = "Porównania";
+  console.info(max, min, avg);
+  const maxDisplay = document.createElement("h1");
+  maxDisplay.classList.add("stat");
+  maxDisplay.innerText = `Maximum - ${max}`;
+  const minDisplay = document.createElement("h1");
+  minDisplay.classList.add("stat");
+  minDisplay.innerText = `Minimum - ${min}`;
+  const avgDisplay = document.createElement("h1");
+  avgDisplay.classList.add("stat");
+  avgDisplay.innerText = `Średnio - ${avg}`;
+  if (firstRun) {
+    wrapper.insertBefore(iterationsHeader, wrapper.firstChild);
+  }
+  container.appendChild(maxDisplay);
+  container.appendChild(minDisplay);
+  container.appendChild(avgDisplay);
+  firstRun = false;
 };
 
 const renderResults = inputArray => {
@@ -74,8 +118,12 @@ const renderResults = inputArray => {
   const iterations = document.createElement("h1");
   iterations.innerText = `Liczba iteracji - ${iterationCount}`;
   iterations.classList.add("iterations");
+  const comparisons = document.createElement("h1");
+  comparisons.innerText = `Liczba porównań - ${comparisonCount}`;
+  comparisons.classList.add("comparisons");
   // Append results to the DOM
   result.appendChild(iterations);
+  result.appendChild(comparisons);
   result.appendChild(unsorted);
   result.appendChild(sorted);
   container.appendChild(result);
@@ -90,15 +138,21 @@ const createRandomValues = length => {
 
 const handleSubmit = () => {
   sortResults = [];
+  comparisonResults = [];
   // Clear previous results
   const container = document.querySelector(".results");
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
-  const stats = document.querySelector(".stats");
+  const stats = document.querySelector(".iterationContainer .stats");
   while (stats.firstChild) {
     stats.removeChild(stats.firstChild);
   }
+  const comparisons = document.querySelector(".comparisonContainer .stats");
+  while (comparisons.firstChild) {
+    comparisons.removeChild(comparisons.firstChild);
+  }
+  comparisons.classList.remove("visible");
   container.classList.remove("visible");
   stats.classList.remove("visible");
   // Generate new results
@@ -109,9 +163,10 @@ const handleSubmit = () => {
       sortArray = [];
       createRandomValues(10);
       renderResults(sortArray);
-      console.info(sortResults);
     }
     renderStats();
+    renderComparisons();
+    comparisons.classList.add("visible");
     stats.classList.add("visible");
     container.classList.add("visible");
   } else {
