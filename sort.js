@@ -31,6 +31,7 @@ let bubbleSort = inputArr => {
         let tmp = inputArr[j];
         inputArr[j] = inputArr[j + 1];
         inputArr[j + 1] = tmp;
+        console.log(inputArr);
         swapped = true;
       }
     }
@@ -104,7 +105,7 @@ const renderResults = inputArray => {
   iterations.innerText = `Liczba iteracji - ${iterationCount}`;
   iterations.classList.add("iterations");
   const comparisons = document.createElement("h1");
-  comparisons.innerText = `Liczba porównań - ${comparisonCount}`;
+  comparisons.innerText = `Liczba zamian - ${comparisonCount}`;
   comparisons.classList.add("comparisons");
   // Append results to the DOM
   result.appendChild(iterations);
